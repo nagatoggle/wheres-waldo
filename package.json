@@ -1,0 +1,16 @@
+{
+  "name": "wheres-waldo",
+  "private": true,
+  "workspaces": ["client", "server"],
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,cyan 'npm run dev -w server' 'npm run dev -w client'",
+    "build": "npm run build -w client",
+    "start": "npm run start -w server",
+    "test": "npm run test -w server",
+    "populate": "npm run populate -w server"
+  },
+  "author": "nagatoggle",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

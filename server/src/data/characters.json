@@ -1,0 +1,32 @@
+{
+  "boardUrl": "/images/board.jpg",
+  "characters": [
+    {
+      "id": "wally",
+      "name": "ウォーリー",
+      "imageUrl": "/images/wally.png",
+      "x_min": 1810,
+      "y_min": 495,
+      "x_max": 1900,
+      "y_max": 630
+    },
+    {
+      "id": "wizard",
+      "name": "魔法使い",
+      "imageUrl": "/images/wizard.png",
+      "x_min": 785,
+      "y_min": 450,
+      "x_max": 855,
+      "y_max": 600
+    },
+    {
+      "id": "odlaw",
+      "name": "オドロー",
+      "imageUrl": "/images/odlaw.png",
+      "x_min": 300,
+      "y_min": 465,
+      "x_max": 350,
+      "y_max": 600
+    }
+  ]
+}

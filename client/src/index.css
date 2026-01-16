@@ -1,0 +1,8 @@
+:root {
+  font-family: 'Noto Sans JP', Roboto, system-ui, Helvetica, Arial, sans-serif;
+}
+
+html {
+  /* Prevent pull-to-refresh on mobile browsers */
+  overscroll-behavior-y: none;
+}
