@@ -1,7 +1,7 @@
 # Where's Waldo
 A full-stack photo tagging application built for [The Odin Project](https://www.theodinproject.com/lessons/nodejs-where-s-waldo-a-photo-tagging-app).
 
-[Live Demo]()
+[Live Demo](https://wheres-waldo-plsz.onrender.com/)
 
 ## Tech Stack
 - Frontend: React, React Router, Material UI
