@@ -6,7 +6,7 @@
     "test": "vitest",
     "dev": "node --watch --env-file=.env src/server.js",
     "dev:local": "node --watch --env-file=.env --env-file=.env.local src/server.js",
-    "start": "node --env-file=.env src/server.js",
+    "start": "node src/server.js",
     "populate": "node --env-file=.env scripts/populate.js"
   },
   "dependencies": {
