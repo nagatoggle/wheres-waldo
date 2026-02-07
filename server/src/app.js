@@ -6,10 +6,12 @@ const app = express();
 app.use(express.json());
 app.use('/api', apiRouter);
 
-const publicPath = path.resolve(import.meta.dirname, '../public');
+const serverRoot = path.dirname(import.meta.dirname);
+const publicPath = path.join(serverRoot, 'public');
 app.use(express.static(publicPath));
 
-const clientDistPath = path.resolve(import.meta.dirname, '../../client/dist');
+const projectRoot = path.dirname(serverRoot);
+const clientDistPath = path.join(projectRoot, 'client', 'dist');
 app.use(express.static(clientDistPath));
 
 app.get('/{*splat}', (req, res) => {
