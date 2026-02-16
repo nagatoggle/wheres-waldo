@@ -5,7 +5,7 @@ const DATA_FILE = process.env.DATA_FILE || 'characters.json';
 
 function readJsonFile(name) {
   const serverSrcDir = path.dirname(import.meta.dirname);
-  const filePath = path.join(srcDir, 'data', name);
+  const filePath = path.join(serverSrcDir, 'data', name);
   const file = readFileSync(filePath, 'utf8');
   return JSON.parse(file);
 }
