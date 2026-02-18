@@ -5,28 +5,28 @@
       "id": "wally",
       "name": "ウォーリー",
       "imageUrl": "/images/wally.png",
-      "x_min": 1810,
-      "y_min": 495,
-      "x_max": 1900,
-      "y_max": 630
+      "xMin": 94.271,
+      "xMax": 98.958,
+      "yMin": 48.529,
+      "yMax": 61.765
     },
     {
       "id": "wizard",
       "name": "魔法使い",
       "imageUrl": "/images/wizard.png",
-      "x_min": 785,
-      "y_min": 450,
-      "x_max": 855,
-      "y_max": 600
+      "xMin": 40.885,
+      "xMax": 44.531,
+      "yMin": 44.118,
+      "yMax": 58.824
     },
     {
       "id": "odlaw",
       "name": "オドロー",
       "imageUrl": "/images/odlaw.png",
-      "x_min": 300,
-      "y_min": 465,
-      "x_max": 350,
-      "y_max": 600
+      "xMin": 15.625,
+      "xMax": 18.229,
+      "yMin": 45.588,
+      "yMax": 58.824
     }
   ]
 }

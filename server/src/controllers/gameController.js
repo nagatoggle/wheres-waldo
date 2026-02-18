@@ -13,8 +13,8 @@ export async function startGame(req, res) {
 }
 
 export function validateClick(req, res) {
-  const { id, clickX, clickY } = req.body;
-  const isCorrect = validateCoords(id, clickX, clickY);
+  const { id, x, y } = req.body;
+  const isCorrect = validateCoords(id, x, y);
 
   res.json({
     found: isCorrect,

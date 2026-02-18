@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { Menu, MenuItem, Box } from '@mui/material';
+import Pin from './components/Pin';
 
-export default function GameBoard({ charas, onSelect, boardUrl }) {
+export default function GameBoard({ charas, foundCharas, onSelect, boardUrl }) {
   const [anchorPos, setAnchorPos] = useState(null);
   const [clickCoords, setClickCoords] = useState({ x: 0, y: 0 });
 
@@ -14,8 +15,8 @@ export default function GameBoard({ charas, onSelect, boardUrl }) {
         : null,
     );
 
-    const naturalPos = getNaturalCoords(event);
-    setClickCoords(naturalPos);
+    const percentCoords = getPercentCoords(event);
+    setClickCoords(percentCoords);
   };
 
   const handleItemClick = (charaId) => {
@@ -28,7 +29,13 @@ export default function GameBoard({ charas, onSelect, boardUrl }) {
   };
 
   return (
-    <>
+    <div
+      style={{
+        position: 'relative',
+        display: 'inline-block',
+        lineHeight: 0,
+      }}
+    >
       <Box
         component='img'
         src={boardUrl}
@@ -36,10 +43,20 @@ export default function GameBoard({ charas, onSelect, boardUrl }) {
         onClick={handleClick}
         sx={{
           display: 'block',
-          width: '100%',
+          width: 'auto',
+          maxWidth: 'none',
           cursor: 'crosshair',
         }}
       />
+
+      {foundCharas.map(fc => (
+        <Pin
+          key={fc.id}
+          label={fc.id}
+          xPercent={fc.x}
+          yPercent={fc.y}
+        />
+      ))}
 
       <Menu
         open={anchorPos !== null}
@@ -54,7 +71,7 @@ export default function GameBoard({ charas, onSelect, boardUrl }) {
       >
         <CharacterMenuItems charas={charas} onItemClick={handleItemClick} />
       </Menu>
-    </>
+    </div>
   );
 }
 
@@ -73,26 +90,11 @@ function CharacterMenuItems({ charas, onItemClick }) {
   );
 }
 
-const getNaturalCoords = (evt) => {
-  const rect = evt.currentTarget.getBoundingClientRect();
-
-  const clickPos = {
-    x: evt.clientX - rect.left,
-    y: evt.clientY - rect.top
-  }
-
-  const displaySize = {
-    width: rect.width,
-    height: rect.height
-  }
-
-  const naturalSize = {
-    width: evt.currentTarget.naturalWidth,
-    height: evt.currentTarget.naturalHeight
-  }
+const getPercentCoords = (event) => {
+  const rect = event.currentTarget.getBoundingClientRect();
 
   return {
-    x: Math.round(clickPos.x * (naturalSize.width / displaySize.width)),
-    y: Math.round(clickPos.y * (naturalSize.height / displaySize.height))
-  }
+    x: ((event.clientX - rect.left) / rect.width) * 100,
+    y: ((event.clientY - rect.top) / rect.height) * 100
+  };
 }

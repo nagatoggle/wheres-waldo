@@ -3,7 +3,7 @@ import { validateCoords } from '../src/models/characters.js';
 
 describe('validateCoords()', () => {
   it('should return true if coordinates are within the area', () => {
-    expect(validateCoords('wally', 1850, 550)).toBe(true);
+    expect(validateCoords('wally', 96.354, 53.922)).toBe(true);
   });
 
   it('should return false if coordinates are outside the area', () => {
