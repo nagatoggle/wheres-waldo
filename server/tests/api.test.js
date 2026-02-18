@@ -9,8 +9,8 @@ describe('API Integration Tests', () => {
         .post('/api/validate')
         .send({
           id: 'wally',
-          clickX: 1850,
-          clickY: 550
+          clickX: 96.354,
+          clickY: 53.922
         });
 
       expect(response.status).toBe(200);

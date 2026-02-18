@@ -28,10 +28,10 @@ export function validateCoords(id, clickX, clickY) {
   const character = charactersData.characters.find(c => c.id === id);
   if (!character) return false;
 
-  const { x_min, y_min, x_max, y_max } = character;
+  const { xMin, yMin, xMax, yMax } = character;
 
-  const isInsideX = clickX >= x_min && clickX <= x_max;
-  const isInsideY = clickY >= y_min && clickY <= y_max;
+  const isInsideX = clickX >= xMin && clickX <= xMax;
+  const isInsideY = clickY >= yMin && clickY <= yMax;
 
   return isInsideX && isInsideY;
 }
