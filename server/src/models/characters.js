@@ -24,14 +24,14 @@ export function getCharacterList() {
   }));
 }
 
-export function validateCoords(id, clickX, clickY) {
+export function validateCoords(id, x, y) {
   const character = charactersData.characters.find(c => c.id === id);
   if (!character) return false;
 
   const { xMin, yMin, xMax, yMax } = character;
 
-  const isInsideX = clickX >= xMin && clickX <= xMax;
-  const isInsideY = clickY >= yMin && clickY <= yMax;
+  const isInsideX = x >= xMin && x <= xMax;
+  const isInsideY = y >= yMin && y <= yMax;
 
   return isInsideX && isInsideY;
 }

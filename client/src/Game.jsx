@@ -7,26 +7,30 @@ import styles from './Game.module.css';
 
 export default function Game() {
   const { sid } = useGameSession();
-  const { characters: masterCharacters, boardUrl } = useOutletContext();
+  const { characters: masterCharas, boardUrl } = useOutletContext();
 
-  const [foundIds, setFoundIds] = useState([]);
+  const [foundCharas, setFoundCharas] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [gameResult, setGameResult] = useState(null);
 
-  const charas = masterCharacters.map(masterChara => ({
-    ...masterChara,
-    isFound: foundIds.includes(masterChara.id)
-  }));
+  const charas = masterCharas.map(mc => {
+    const isFound = foundCharas.some(fc => fc.id === mc.id);
 
-  const handleCharaSelect = async (clickCharaId, clickX, clickY) => {
+    return {
+      ...mc,
+      isFound
+    }
+  });
+
+  const handleCharaSelect = async (clickCharaId, x, y) => {
     try {
       const response = await fetch('/api/validate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           id: clickCharaId,
-          clickX: clickX,
-          clickY: clickY
+          x,
+          y
         })
       });
       if (!response.ok) {
@@ -36,10 +40,17 @@ export default function Game() {
       const result = await response.json();
 
       if (result.found) {
-        const nextFoundIds = [...foundIds, clickCharaId];
-        setFoundIds(nextFoundIds);
+        const nextFoundCharas = [
+          ...foundCharas,
+          {
+            id: clickCharaId,
+            x,
+            y
+          }
+        ];
+        setFoundCharas(nextFoundCharas);
 
-        const isGameover = nextFoundIds.length === masterCharacters.length;
+        const isGameover = nextFoundCharas.length === masterCharas.length;
         if (isGameover) {
           endGame();
         }
@@ -94,7 +105,7 @@ export default function Game() {
 
   return (
     <div className={styles.fadeIn}>
-      <GameBoard charas={charas} onSelect={handleCharaSelect} boardUrl={boardUrl} />
+      <GameBoard charas={charas} foundCharas={foundCharas} onSelect={handleCharaSelect} boardUrl={boardUrl} />
 
       {gameResult && (
         <Modal
